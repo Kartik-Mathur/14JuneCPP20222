@@ -4,7 +4,7 @@ using namespace std;
 
 int main() {
 
-	int n, row, i;
+	int n, row, i, j;
 	char ch;
 	cin >> n;
 	for (row = 1; row <= n; ++row)
@@ -14,7 +14,7 @@ int main() {
 		ch = 'A';
 		for (i = 1; i <= n - row + 1; ++i)
 		{
-			cout << ch;
+			cout << ch ;
 			ch++;
 		}
 
