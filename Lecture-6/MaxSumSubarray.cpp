@@ -13,10 +13,13 @@ int main() {
 		for (int j = i; j < n; ++j)
 		{
 			int sum = 0;
+			// Pehle i se lekar j tak sabhi ka sum niklega
 			for (int k = i; k <= j; ++k)
 			{
 				sum += a[k];
 			}
+			// Jab sum aa gaya i se lekar j tak ka, tab compare
+			// karoge answer se
 			if (sum > ans) {
 				ans = sum;
 				start = i;
