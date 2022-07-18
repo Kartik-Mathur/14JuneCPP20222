@@ -5,38 +5,47 @@ using namespace std;
 class Car {
 private:
 	int price;
+	const int tyres;
 public:
 	// char name[100];
 	char* name;
 	int mileage;
 	int model;
+	static int cnt;
 
 	//////////////////// DEFAULT FUNCTIONS //////////////////////////
 	// 1. Constructor: By default hota hai, bas dikhta nhi h
-	Car() {
+	Car(): tyres(4), name(NULL) {
 		cout << "Inside Default Constructor" << endl;
-		name = NULL;
+		// name = NULL;
+		// tyres = 4; // Assignment
+		cnt++;
 	}
 
 	// 2. Parameterized Constructor
 	// Car A("Audi", 100, 2020, 10);
-	Car(char *n, int p, int m, int mil) {
+	Car(char *name, int price, int model, int mileage): tyres(4) {
 		cout << "Inside Parameterized Constructor" << endl;
-		name = new char[strlen(n) + 1];
-		strcpy(name, n);
-		price = p;
-		model = m;
-		mileage = mil;
+		this->name = new char[strlen(name) + 1];
+		strcpy((*this).name, name);
+		this->price = price;
+		(*this).model = model;
+		(*this).mileage = mileage;
+		// price = p;
+		// model = m;
+		// mileage = mil;
+		cnt++;
 	}
 
 	// 3. Copy Constructor
-	Car(Car &X) {
+	Car(Car &X): tyres(4) {
 		cout << "Inside Copy Constructor" << endl;
 		name = new char[strlen(X.name) + 1];
 		strcpy(name, X.name);
 		price = X.price;
 		mileage = X.mileage;
 		model = X.model;
+		cnt++;
 	}
 
 	// 4. Copy Assignment Operator(=)
@@ -56,6 +65,7 @@ public:
 	// 5. Destructor: Object ko destroy krta hai
 	~Car() {
 		cout << "Deleting car: " << name << endl;
+		cnt--;
 	}
 
 	//////////////////// !DEFAULT FUNCTIONS //////////////////////////
@@ -113,6 +123,7 @@ public:
 
 };
 ///////////////////////// BLUEPRINT/////////////////////////
+int Car::cnt = 0;
 
 int main() {
 
@@ -148,6 +159,9 @@ int main() {
 	B.print();
 	C.print();
 	D.print();
+
+	// cout << A.cnt << endl;
+	// cout << Car::cnt << endl;
 
 	// cout << "Checking the operator overloading" << endl;
 	// A += B;
