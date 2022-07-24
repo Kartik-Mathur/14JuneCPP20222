@@ -15,7 +15,7 @@ void PhoneKeypad(char *in, char*out, int i, int k) {
 	}
 	// recursive case
 	int d = in[i] - '0';
-	for (int j = 0; j < keys[d][j] != '\0' ; ++j)
+	for (int j = 0;  keys[d][j] != '\0' ; ++j)
 	{
 		out[k] = keys[d][j];
 		PhoneKeypad(in, out, i + 1, k + 1);
